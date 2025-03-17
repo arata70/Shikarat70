@@ -6,14 +6,6 @@
 }
 
 body {
-    font-family: 'Noto Sans CJK';
-    src: url('fonts/NotoSansCJK-Regular.woff2') format('woff2'),
-         url('fonts/NotoSansCJK-Regular.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-    background-color: #f9f9f9;
-    color: #333;
-    background-image: url(img/Обои\ Кадзуха.jpeg);
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -21,25 +13,38 @@ body {
     flex-direction: column;
     align-items: center;
     height: 100vh;
+   
+   
+   
 }
+.bk{
 
-
-.navbar {
+   background-image: url(img/bk1.jpeg);
+   background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: blur(3px);
     width: 100%;
-    background-color: #363e4749;
-    text-align: center;
-    padding: 15px 0;
+    height: 100% ;
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: 1;
 }
+
+
 
 .logo {
-    font-size: 2rem;
-    color: #fff;
-    font-weight: bold;
+    font-size: 20px;
+    color: #000000;
+    font-weight: 700;
+    font-family: monospace;
 }
 
 /* Gambar profil */
 .kazuha {
-    width: 150px;
+    margin-top: 20px;
+    width: 90px;
     border-radius: 50%;
     margin-bottom: 10px;
 }
@@ -50,14 +55,19 @@ body {
     max-width: 400px;
     text-align: center;
     padding: 10px;
+    padding-bottom: 40px;
     margin-top: 100px;
-    background-color: #ffffff54;
+    background-color: #ccc6c673;
+    
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    z-index: 2;
 }
 
 
 .links {
+    margin-top: 10px;
     display: flex;
     flex-direction: column;
     gap: 15px;
@@ -66,9 +76,9 @@ body {
 .link {
     display: block;
     text-decoration: none;
-    padding: 15px;
-    background-color: #3d434b21;
-    color: rgb(0, 0, 0);
+    padding: 10px;
+    background-color: #635f5fe5;
+    color: rgb(255, 252, 252);
     border-radius: 8px;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.2rem;
@@ -84,14 +94,19 @@ body {
 
 /* Media Queries untuk Responsivitas */
 @media screen and (max-width: 768px) {
+    .bk{
+        background-image: url(img/bk3.jpeg);
+        filter: blur(0);
+    }
     .container {
         width: 80%;
         max-width: 500px;
-        margin-top: 190px;
+        margin-top:160px;
+        height: 450px;
     }
 
     .kazuha {
-        width: 110px ;
+        width: 90px ;
     }
 
     .logo {
@@ -99,8 +114,11 @@ body {
     }
 
     .link {
+        color: #000000;
+        background-color: rgb(248, 237, 222);
+        margin-top: 2px;
         font-size: 1rem;
-        padding: 12px;
+        padding: 10px;
     }
 }
 
@@ -108,16 +126,21 @@ body {
     body {
         background-size: 150% 150%; 
     }
+    .bk{
+        
+        background-image: url(img/bk3.jpeg);
+        filter: blur(0);
+    }
 
     .container {
         width: 90%;
         max-width: 100%;
-        margin-top: 140px;
+        margin-top: 220px;
         padding: 20px;
     }
 
     .kazuha {
-        width: 70px;
+        width: 50px;
         
     }
 
@@ -126,6 +149,7 @@ body {
     }
 
     .link {
+        background-color: aliceblue;
         font-size: 0.9rem;
         padding: 10px;
     }
