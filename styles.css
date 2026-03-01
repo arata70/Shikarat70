@@ -1,3 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@400;600;700&display=swap");
+
+:root {
+  --kazuha-cream: #f8efe2;
+  --kazuha-red: #b44f45;
+  --kazuha-green: #6f9d88;
+  --kazuha-gold: #d9bb8a;
+  --text-dark: #2f2a27;
+  --card-bg: rgba(250, 244, 235, 0.76);
+  --card-border: rgba(255, 255, 255, 0.55);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -5,98 +17,160 @@
 }
 
 body {
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-}
-.bk {
-  background-image: url(img/bk1.jpeg);
-  background-size: 100% 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  filter: blur(3px);
-  width: 100%;
-  height: 100%;
-
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 1;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px 12px;
+  overflow-x: hidden;
+  color: var(--text-dark);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background: linear-gradient(120deg, #f7efe2 0%, #efe6db 45%, #f6efe5 100%);
+  position: relative;
 }
 
-.logo {
-  font-size: 20px;
-  color: #000000;
-  font-weight: 700;
-  font-family: monospace;
+.bg-layer {
+  position: fixed;
+  inset: 0;
+  background: url("img/walpapaperkazu.jpg") center/cover no-repeat;
+  opacity: 0.42;
+  filter: saturate(1.1) contrast(1.04);
+  z-index: -3;
 }
 
-/* Gambar profil */
-.kazuha {
-  margin-top: 20px;
-  width: 90px;
-  border-radius: 50%;
-  margin-bottom: 10px;
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(180, 79, 69, 0.2), transparent 35%),
+    radial-gradient(circle at 88% 80%, rgba(111, 157, 136, 0.22), transparent 38%),
+    linear-gradient(170deg, rgba(255, 248, 236, 0.5), rgba(249, 236, 218, 0.25));
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  backdrop-filter: blur(2px);
+  z-index: -1;
 }
 
 .container {
-  width: 60%;
-  max-width: 400px;
+  width: min(92vw, 430px);
+  padding: 28px 24px 24px;
+  border-radius: 24px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 18px 45px rgba(56, 41, 31, 0.25);
   text-align: center;
-  padding: 10px;
-  height: 520px;
-  padding-bottom: 90px;
-  margin-top: 100px;
-  background-color: #ccc6c673;
+  animation: rise-in 0.8s ease both;
+}
 
-  border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  position: relative;
-  z-index: 2;
+.profile {
+  margin-bottom: 18px;
+}
+
+.kazuha {
+  width: 112px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 8px 20px rgba(64, 43, 34, 0.24);
+}
+
+.logo {
+  margin-top: 14px;
+  font-family: "Cinzel", serif;
+  font-size: clamp(1.45rem, 2.8vw, 1.85rem);
+  color: #432d26;
+  letter-spacing: 0.05em;
 }
 
 .links {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  display: grid;
+  gap: 12px;
 }
 
 .link {
   display: block;
   text-decoration: none;
-  padding: 10px;
-  background-color: #635f5fe5;
-  color: rgb(255, 252, 252);
-  border-radius: 8px;
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 1.2rem;
-  box-sizing: border-box;
-  font-weight: bold;
-  transition: background-color 0.3s;
+  padding: 12px 14px;
+  font-weight: 700;
+  font-size: 1.01rem;
+  border-radius: 12px;
+  color: #2f2622;
+  background: linear-gradient(135deg, rgba(255, 251, 245, 0.93), rgba(244, 231, 214, 0.96));
+  border: 1px solid rgba(209, 180, 141, 0.55);
+  box-shadow: 0 8px 14px rgba(91, 63, 44, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+  animation: float-up 0.55s ease both;
 }
 
 .link:hover {
-  background-color: #212427;
-  color: #fff;
+  transform: translateY(-2px);
+  filter: brightness(1.04);
+  box-shadow: 0 12px 18px rgba(91, 63, 44, 0.18);
 }
 
-/* Media Queries untuk Responsivitas */
-@media screen and (max-width: 768px) {
-  .bk {
-    background-image: url(img/bk3.jpeg);
-    filter: blur(0);
+.link:focus-visible {
+  outline: 3px solid rgba(111, 157, 136, 0.45);
+  outline-offset: 2px;
+}
+
+.link-review {
+  color: #ffffff;
+  background: linear-gradient(135deg, #6f9d88, #57806f);
+  border-color: rgba(100, 142, 124, 0.95);
+  box-shadow: 0 10px 18px rgba(74, 112, 97, 0.32);
+}
+
+.link-review:hover {
+  filter: brightness(1.06);
+  box-shadow: 0 14px 20px rgba(74, 112, 97, 0.4);
+}
+
+.links .link:nth-child(1) { animation-delay: 0.06s; }
+.links .link:nth-child(2) { animation-delay: 0.11s; }
+.links .link:nth-child(3) { animation-delay: 0.16s; }
+.links .link:nth-child(4) { animation-delay: 0.21s; }
+.links .link:nth-child(5) { animation-delay: 0.26s; }
+.links .link:nth-child(6) { animation-delay: 0.31s; }
+.links .link:nth-child(7) { animation-delay: 0.36s; }
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes float-up {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    padding: 18px 10px;
+  }
+
   .container {
-    width: 80%;
-    max-width: 500px;
-    margin-top: 160px;
-    padding-bottom:50px;
-    height: 530px;
+    width: min(95vw, 430px);
+    padding: 22px 18px 18px;
+    border-radius: 20px;
   }
 
   .kazuha {
@@ -104,49 +178,20 @@ body {
   }
 
   .logo {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
   }
 
   .link {
-    color: #000000;
-    background-color: rgb(248, 237, 222);
-    margin-top: 2px;
-    font-size: 1rem;
-    padding: 10px;
+    font-size: 0.96rem;
+    padding: 11px 12px;
   }
 }
 
-@media screen and (max-width: 480px) {
-  body {
-    background-size: 150% 150%;
-  }
-  .bk {
-    background-image: url(img/bk3.jpeg);
-    filter: blur(0);
-  }
-
-  .container {
-    width: 90%;
-    height: 450px;
-    max-width: 100%;
-    margin-top: 30px;
-    padding-right:20px;
-    padding-left:20px;
-    padding-top:20px;
-    padding-bottom:70px;
-  }
-
-  .kazuha {
-    width: 50px;
-  }
-
-  .logo {
-    font-size: 1.2rem;
-  }
-
-  .link {
-    background-color: aliceblue;
-    font-size: 0.9rem;
-    padding: 10px;
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
   }
 }
